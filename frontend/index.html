@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#090d18">
+    <title>Nova AI — Your Intelligent Workspace</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+        <div class="brand-row">
+            <div class="brand-mark">✦</div>
+            <div><b>NOVA</b><span>AI WORKSPACE</span></div>
+            <button class="icon-btn mobile-close" onclick="toggleSidebar(false)" aria-label="Close menu">×</button>
+        </div>
+
+        <button class="new-chat" onclick="newChat()"><span>＋</span> New conversation</button>
+
+        <div class="side-heading">WORKSPACE</div>
+        <button class="side-action" onclick="exportCurrentChat()">⇩ <span>Export conversation</span></button>
+        <button class="side-action" onclick="toggleTheme()">◐ <span>Switch appearance</span></button>
+
+        <div class="history-heading"><span>RECENT CHATS</span><span id="chatCount">0</span></div>
+        <div id="history" class="history-list"></div>
+
+        <div class="sidebar-footer">
+            <div class="avatar">N</div>
+            <div class="profile-text"><b>Nova Assistant</b><small><i></i> Ready to help</small></div>
+            <span class="version">v2.0</span>
+        </div>
+    </aside>
+
+    <main class="main-panel">
+        <header class="topbar">
+            <div class="top-left">
+                <button class="icon-btn menu-btn" onclick="toggleSidebar()" aria-label="Open menu">☰</button>
+                <div><div class="page-title">AI Assistant <span class="beta">BETA</span></div><div class="page-subtitle">Your ideas, amplified.</div></div>
+            </div>
+            <div class="top-right">
+                <div class="connection"><span id="connectionDot"></span><span id="connectionText">Checking server</span></div>
+                <button class="icon-btn" onclick="toggleTheme()" title="Toggle theme" aria-label="Toggle theme">◐</button>
+                <button class="clear-btn" onclick="clearChat()">Clear chat</button>
+            </div>
+        </header>
+
+        <section class="chat-scroll" id="chatArea">
+            <div class="welcome" id="welcome">
+                <div class="orb-wrap"><div class="orb">✦</div><span class="orb-ring"></span></div>
+                <div class="welcome-kicker">WELCOME TO NOVA AI</div>
+                <h1>Think bigger.<br><span>Build smarter.</span></h1>
+                <p class="welcome-copy">Your intelligent space to learn, create, solve problems and turn ideas into action.</p>
+                <div class="suggestions">
+                    <button onclick="usePrompt('Teach me C++ object-oriented programming with examples')"><span class="suggestion-icon purple">⌘</span><b>Learn something</b><small>Understand complex topics simply</small><em>↗</em></button>
+                    <button onclick="usePrompt('Create a responsive website using HTML, CSS and JavaScript')"><span class="suggestion-icon blue">〈/〉</span><b>Build with code</b><small>Generate and debug code</small><em>↗</em></button>
+                    <button onclick="usePrompt('Help me prepare for a technical interview with practice questions')"><span class="suggestion-icon orange">✧</span><b>Prepare & practise</b><small>Get ready for your next challenge</small><em>↗</em></button>
+                    <button onclick="usePrompt('Create a practical step-by-step study plan for this week')"><span class="suggestion-icon green">◈</span><b>Plan an idea</b><small>Turn goals into clear next steps</small><em>↗</em></button>
+                </div>
+                <div class="welcome-foot">✦ &nbsp;Ask a question to get started</div>
+            </div>
+            <div class="messages" id="messages"></div>
+        </section>
+
+        <footer class="composer-wrap">
+            <div class="composer">
+                <textarea id="messageInput" rows="1" maxlength="12000" placeholder="Ask Nova anything..." aria-label="Message Nova AI"></textarea>
+                <div class="composer-tools"><span class="input-hint">ENTER to send · SHIFT + ENTER for new line</span><span id="charCount">0 / 12000</span><button id="sendButton" class="send-btn" onclick="sendMessage()" aria-label="Send message">↑</button></div>
+            </div>
+            <div class="footer-note">Nova can make mistakes. Verify important information. <span>Powered by AI ✦</span></div>
+        </footer>
+    </main>
+</div>
+<div id="toast" class="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>
